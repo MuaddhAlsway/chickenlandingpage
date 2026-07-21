@@ -1,0 +1,120 @@
+.membership {
+  position: relative;
+  background: var(--color-black-light);
+}
+
+.membership__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.membership__label {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.membership__title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.15;
+}
+
+.membership__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.membership__card {
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  background: var(--color-black-card);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: all 0.5s var(--transition-smooth);
+}
+
+.membership__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.3);
+}
+
+.membership__card--featured {
+  border-color: rgba(201, 168, 76, 0.3);
+  background: linear-gradient(135deg, rgba(201, 168, 76, 0.06) 0%, var(--color-black-card) 100%);
+  padding: 3rem 2rem;
+}
+
+.membership__card-ribbon {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.4rem 1.2rem;
+  background: var(--color-gold);
+  color: var(--color-black);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.membership__card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.membership__card-name {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.membership__card-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-gold);
+}
+
+.membership__card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.membership__card-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-accent);
+  font-size: 0.95rem;
+  color: var(--color-white-dim);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.membership__card-benefit svg {
+  color: var(--color-gold);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+@media (max-width: 1000px) {
+  .membership__grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .membership__card--featured {
+    order: -1;
+  }
+}

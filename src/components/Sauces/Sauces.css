@@ -1,0 +1,133 @@
+.sauces {
+  position: relative;
+  overflow: hidden;
+}
+
+.sauces__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.sauces__left {
+  position: sticky;
+  top: 8rem;
+}
+
+.sauces__label {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.sauces__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.sauces__desc {
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  color: var(--color-white-dim);
+  line-height: 1.7;
+  max-width: 400px;
+  font-weight: 300;
+}
+
+.sauces__right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sauces__item {
+  display: flex;
+  align-items: stretch;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  position: relative;
+  transition: all 0.4s var(--transition-smooth);
+  cursor: pointer;
+}
+
+.sauces__item:first-child {
+  border-top: 1px solid rgba(201, 168, 76, 0.08);
+}
+
+.sauces__item:hover {
+  padding-left: 1rem;
+  background: rgba(201, 168, 76, 0.02);
+}
+
+.sauces__item-color {
+  width: 4px;
+  min-height: 100%;
+  border-radius: 2px;
+  margin-right: 1.5rem;
+  transition: width 0.3s var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.sauces__item:hover .sauces__item-color {
+  width: 6px;
+}
+
+.sauces__item-content {
+  flex: 1;
+}
+
+.sauces__item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.sauces__item-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-white);
+}
+
+.sauces__item-heat {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold-muted);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.sauces__item-desc {
+  font-family: var(--font-accent);
+  font-size: 0.95rem;
+  color: var(--color-white-muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.sauces__item-line {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: width 0.5s var(--transition-luxury);
+}
+
+.sauces__item:hover .sauces__item-line {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .sauces__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .sauces__left {
+    position: static;
+  }
+}
