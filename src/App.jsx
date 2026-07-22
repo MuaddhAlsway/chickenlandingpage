@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import Philosophy from './components/Philosophy/Philosophy';
@@ -32,8 +33,15 @@ function HomePage() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  const handleLoadComplete = useCallback(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <div className="app">
+      {loading && <LoadingScreen onComplete={handleLoadComplete} />}
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
