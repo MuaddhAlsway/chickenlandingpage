@@ -76,14 +76,12 @@
 .hero__label {
   display: inline-block;
   margin-bottom: 2rem;
-  opacity: 0;
 }
 
 .hero__headline {
   font-size: clamp(3.5rem, 8vw, 7rem);
   color: var(--color-white);
   margin-bottom: 2rem;
-  opacity: 0;
 }
 
 .hero__headline-accent {
@@ -99,17 +97,12 @@
   margin-bottom: 3rem;
   max-width: 500px;
   font-weight: 300;
-  opacity: 0;
 }
 
 .hero__cta {
   display: flex;
   gap: 1.25rem;
   align-items: center;
-}
-
-.hero__cta > * {
-  opacity: 0;
 }
 
 .hero__scroll {
@@ -122,7 +115,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  opacity: 0;
 }
 
 .hero__scroll-line {
@@ -140,15 +132,43 @@
   color: var(--color-gold-muted);
 }
 
+/* Large tablets */
+@media (max-width: 1024px) {
+  .hero__content {
+    padding-top: 7.5rem;
+  }
+
+  .hero__bg-image::before {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 768px) {
+  .hero {
+    min-height: 100svh;
+  }
+
   .hero__content {
     padding-top: 7rem;
+  }
+
+  .hero__text {
+    max-width: 100%;
   }
 
   .hero__bg-image::before {
     width: 300px;
     height: 300px;
     right: -10%;
+  }
+
+  .hero__bg-image::after {
+    width: 200px;
+    height: 200px;
+    left: 5%;
+    bottom: 15%;
   }
 
   .hero__cta {
@@ -158,5 +178,98 @@
 
   .hero__scroll {
     bottom: 2rem;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 600px) {
+  .hero__content {
+    padding-top: 6.5rem;
+  }
+
+  .hero__label {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__headline {
+    font-size: clamp(2.2rem, 10vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__sub {
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero__cta {
+    gap: 1rem;
+  }
+
+  .hero__bg-image::before {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero__bg-image::after {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hero__scroll {
+    bottom: 1.5rem;
+  }
+
+  .hero__scroll-line {
+    height: 35px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  .hero__content {
+    padding-top: 5.5rem;
+  }
+
+  .hero__label {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__headline {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__sub {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+
+  .hero__bg-image::before {
+    width: 150px;
+    height: 150px;
+    right: -20%;
+    filter: blur(40px);
+  }
+
+  .hero__bg-image::after {
+    width: 120px;
+    height: 120px;
+    left: 0%;
+    bottom: 20%;
+    filter: blur(30px);
+  }
+
+  .hero__scroll {
+    bottom: 1rem;
+  }
+
+  .hero__scroll-line {
+    height: 25px;
+  }
+
+  .hero__scroll-text {
+    font-size: 0.5rem;
   }
 }

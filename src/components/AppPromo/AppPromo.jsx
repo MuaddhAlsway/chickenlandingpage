@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../../context/LanguageContext';
 import './AppPromo.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AppPromo = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -62,15 +64,13 @@ const AppPromo = () => {
       <div className="coming-soon__glow"></div>
       <div className="container">
         <div className="coming-soon__content">
-          <span className="label coming-soon__label">Mobile App</span>
+          <span className="label coming-soon__label">{t('appLabel')}</span>
           <h2 className="headline coming-soon__title">
-            Something golden<br/>
-            <span className="gold-text">is coming.</span>
+            {t('appTitle1')}<br/>
+            <span className="gold-text">{t('appTitle2')}</span>
           </h2>
           <p className="coming-soon__subtitle">
-            The GOLDEN CRISP app is being crafted with the same obsession 
-            we put into every piece. Skip the line. Earn rewards. 
-            Experience luxury, redefined.
+            {t('appDesc')}
           </p>
 
           <div className="coming-soon__line"></div>
@@ -84,7 +84,7 @@ const AppPromo = () => {
                   <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <span className="coming-soon__feature-text">One-Tap Ordering</span>
+              <span className="coming-soon__feature-text">{t('appFeature1')}</span>
             </div>
             <div className="coming-soon__feature">
               <div className="coming-soon__feature-icon">
@@ -93,7 +93,7 @@ const AppPromo = () => {
                   <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="coming-soon__feature-text">Real-Time Tracking</span>
+              <span className="coming-soon__feature-text">{t('appFeature2')}</span>
             </div>
             <div className="coming-soon__feature">
               <div className="coming-soon__feature-icon">
@@ -105,7 +105,7 @@ const AppPromo = () => {
                   <path d="M12 7H16.5C17.163 7 17.7989 6.73661 18.2678 6.26777C18.7366 5.79893 19 5.16304 19 4.5C19 3.83696 18.7366 3.20107 18.2678 2.73223C17.7989 2.26339 17.163 2 16.5 2C13 2 12 7 12 7Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <span className="coming-soon__feature-text">Exclusive Rewards</span>
+              <span className="coming-soon__feature-text">{t('appFeature3')}</span>
             </div>
             <div className="coming-soon__feature">
               <div className="coming-soon__feature-icon">
@@ -115,16 +115,16 @@ const AppPromo = () => {
                   <path d="M12 15V3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <span className="coming-soon__feature-text">App-Only Drops</span>
+              <span className="coming-soon__feature-text">{t('appFeature4')}</span>
             </div>
           </div>
 
           <div className="coming-soon__notify">
-            <p className="coming-soon__notify-text">Be the first to know.</p>
+            <p className="coming-soon__notify-text">{t('appNotify')}</p>
             <div className="coming-soon__notify-form">
-              <input type="email" placeholder="Enter your email" className="coming-soon__notify-input" />
+              <input type="email" placeholder={t('appEmail')} className="coming-soon__notify-input" />
               <button className="btn-primary coming-soon__notify-btn">
-                <span>Notify Me</span>
+                <span>{t('appNotifyBtn')}</span>
               </button>
             </div>
           </div>

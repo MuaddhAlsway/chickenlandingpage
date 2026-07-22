@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../../context/LanguageContext';
 import './Hero.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const { t } = useLanguage();
   const heroRef = useRef(null);
   const headlineRef = useRef(null);
   const subRef = useRef(null);
@@ -22,39 +24,32 @@ const Hero = () => {
         { scaleY: 1 },
         { scaleY: 0, duration: 1.4, ease: 'power4.inOut' }
       )
-      .fromTo('.hero__label',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.8 },
+      .from('.hero__label',
+        { opacity: 0, y: 20, duration: 0.8 },
         '-=0.6'
       )
-      .fromTo(headlineRef.current,
-        { opacity: 0, y: 60, clipPath: 'inset(100% 0 0 0)' },
-        { opacity: 1, y: 0, clipPath: 'inset(0% 0 0 0)', duration: 1.2, ease: 'power4.out' },
+      .from(headlineRef.current,
+        { opacity: 0, y: 60, duration: 1.2, ease: 'power4.out' },
         '-=0.5'
       )
-      .fromTo('.hero__headline-accent',
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8 },
+      .from('.hero__headline-accent',
+        { opacity: 0, x: -30, duration: 0.8 },
         '-=0.6'
       )
-      .fromTo(subRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8 },
+      .from(subRef.current,
+        { opacity: 0, y: 30, duration: 0.8 },
         '-=0.4'
       )
-      .fromTo(ctaRef.current.children,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, stagger: 0.15, duration: 0.6 },
+      .from(ctaRef.current.children,
+        { opacity: 0, y: 20, stagger: 0.15, duration: 0.6 },
         '-=0.3'
       )
-      .fromTo(imageRef.current,
-        { opacity: 0, scale: 1.1 },
-        { opacity: 1, scale: 1, duration: 1.5, ease: 'power2.out' },
+      .from(imageRef.current,
+        { opacity: 0, scale: 1.1, duration: 1.5, ease: 'power2.out' },
         '-=1.2'
       )
-      .fromTo(scrollRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.6 },
+      .from(scrollRef.current,
+        { opacity: 0, duration: 0.6 },
         '-=0.4'
       );
 
@@ -104,24 +99,23 @@ const Hero = () => {
 
       <div className="hero__content container">
         <div className="hero__text">
-          <span className="label hero__label">Est. 2024 &mdash; Riyadh, Saudi Arabia</span>
+          <span className="label hero__label">{t('heroLabel')}</span>
           <h1 ref={headlineRef} className="headline hero__headline">
-            Redefining<br/>
-            <span className="hero__headline-accent">Fried Chicken.</span>
+            {t('heroTitle1')}<br/>
+            <span className="hero__headline-accent">{t('heroTitle2')}</span>
           </h1>
           <p ref={subRef} className="hero__sub">
-            Where premium craftsmanship meets culinary artistry.<br/>
-            Every piece tells a story of perfection.
+            {t('heroSub')}
           </p>
           <div ref={ctaRef} className="hero__cta">
             <a href="#order" className="btn-primary">
-              <span>Order Now</span>
+              <span>{t('heroOrder')}</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
             <a href="#menu" className="btn-outline">
-              <span>Explore Menu</span>
+              <span>{t('heroExplore')}</span>
             </a>
           </div>
         </div>
@@ -129,7 +123,7 @@ const Hero = () => {
 
       <div ref={scrollRef} className="hero__scroll">
         <div className="hero__scroll-line"></div>
-        <span className="hero__scroll-text">Scroll</span>
+        <span className="hero__scroll-text">{t('heroScroll')}</span>
       </div>
     </section>
   );

@@ -168,7 +168,7 @@
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
   .menu__grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -176,5 +176,19 @@
 
   .menu__card-visual {
     padding-top: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu__card-content {
+    padding: 1.25rem;
+  }
+
+  .menu__card-name {
+    font-size: 1.1rem;
+  }
+
+  .menu__card-desc {
+    font-size: 0.85rem;
   }
 }

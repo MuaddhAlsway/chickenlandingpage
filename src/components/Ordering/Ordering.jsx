@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Ordering.css';
+import { useLanguage } from '../../context/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Ordering = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -34,25 +36,23 @@ const Ordering = () => {
     <section id="order" ref={sectionRef} className="ordering section-padding">
       <div className="container">
         <div className="ordering__content">
-          <span className="label">Online Ordering</span>
+          <span className="label">{t('orderingLabel')}</span>
           <h2 className="headline ordering__title">
-            Your golden moment<br/>
-            <span className="gold-text">is one tap away.</span>
+            {t('orderingTitle1')}<br/>
+            <span className="gold-text">{t('orderingTitle2')}</span>
           </h2>
           <p className="ordering__desc">
-            Order directly from our website or mobile app. 
-            Curbside pickup, delivery, or dine-in &mdash; 
-            the GOLDEN CRISP experience, however you want it.
+            {t('orderingDesc')}
           </p>
           <div className="ordering__actions">
             <a href="#" className="btn-primary">
-              <span>Start Your Order</span>
+              <span>{t('orderingStart')}</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
             <a href="#" className="btn-outline">
-              <span>Find a Location</span>
+              <span>{t('orderingLocation')}</span>
             </a>
           </div>
         </div>
@@ -65,8 +65,8 @@ const Ordering = () => {
                 <path d="M14 7V14L18 18" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round"/>
               </svg>
             </div>
-            <span className="ordering__feature-title">30 Min Delivery</span>
-            <span className="ordering__feature-desc">Lightning fast, always fresh</span>
+            <span className="ordering__feature-title">{t('orderingFeature1Title')}</span>
+            <span className="ordering__feature-desc">{t('orderingFeature1Desc')}</span>
           </div>
           <div className="ordering__feature">
             <div className="ordering__feature-icon">
@@ -75,8 +75,8 @@ const Ordering = () => {
                 <path d="M10 14L13 17L18 11" stroke="currentColor" strokeWidth="0.75" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="ordering__feature-title">Real-Time Tracking</span>
-            <span className="ordering__feature-desc">Know exactly when it arrives</span>
+            <span className="ordering__feature-title">{t('orderingFeature2Title')}</span>
+            <span className="ordering__feature-desc">{t('orderingFeature2Desc')}</span>
           </div>
           <div className="ordering__feature">
             <div className="ordering__feature-icon">
@@ -86,8 +86,8 @@ const Ordering = () => {
                 <circle cx="14" cy="11" r="2" stroke="currentColor" strokeWidth="0.75"/>
               </svg>
             </div>
-            <span className="ordering__feature-title">Premium Packaging</span>
-            <span className="ordering__feature-desc">Designed to impress</span>
+            <span className="ordering__feature-title">{t('orderingFeature3Title')}</span>
+            <span className="ordering__feature-desc">{t('orderingFeature3Desc')}</span>
           </div>
         </div>
       </div>

@@ -151,3 +151,19 @@
     border-right: 1px solid rgba(201, 168, 76, 0.15);
   }
 }
+
+@media (max-width: 480px) {
+  .coming-soon__title {
+    font-size: 1.8rem;
+  }
+
+  .coming-soon__subtitle {
+    font-size: 1rem;
+  }
+
+  .coming-soon__feature {
+    padding: 0.6rem 1rem;
+    width: 100%;
+    max-width: 280px;
+  }
+}

@@ -137,3 +137,13 @@
     margin: 0 auto;
   }
 }
+
+@media (max-width: 480px) {
+  .offers__card {
+    padding: 2rem 1.5rem;
+  }
+
+  .offers__card-discount {
+    font-size: 1.8rem;
+  }
+}

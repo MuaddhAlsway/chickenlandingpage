@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '../../context/LanguageContext';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -8,6 +9,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const { toggleLanguage, t, isRTL, getRoute } = useLanguage();
 
   useEffect(() => {
     setMenuOpen(false);
@@ -30,22 +32,10 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { label: 'Menu', to: '/menu' },
-    { label: 'Sauces', href: '#sauces', showOnHome: true },
-    { label: 'Family', href: '#family', showOnHome: true },
-    { label: 'Club', href: '#membership', showOnHome: true },
-    { label: 'Offers', href: '#offers', showOnHome: true },
-  ];
-
-  const visibleLinks = isHome
-    ? navLinks
-    : navLinks.filter(l => l.to);
-
   return (
     <nav ref={navRef} className={`navbar ${scrolled || !isHome ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
-        <Link to="/" className="navbar__logo">
+          <Link to={getRoute('/')} className="navbar__logo">
           <span className="navbar__logo-icon">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
               <path d="M14 2L2 14L14 26L26 14L14 2Z" stroke="currentColor" strokeWidth="1.5"/>
@@ -56,43 +46,39 @@ const Navbar = () => {
         </Link>
 
         <div className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
-          {isHome && navLinks.filter(l => l.href).map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="navbar__link"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          {!isHome && navLinks.filter(l => l.href && l.showOnHome).map((link) => (
-            <Link
-              key={link.label}
-              to={`/${link.href}`}
-              className="navbar__link"
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link to="/menu" className="navbar__link" onClick={() => setMenuOpen(false)}>
-            Full Menu
+          {isHome && (
+            <>
+              <a href="#sauces" className="navbar__link" onClick={() => setMenuOpen(false)}>{t('navSauces')}</a>
+              <a href="#family" className="navbar__link" onClick={() => setMenuOpen(false)}>{t('navFamily')}</a>
+              <a href="#membership" className="navbar__link" onClick={() => setMenuOpen(false)}>{t('navClub')}</a>
+              <a href="#offers" className="navbar__link" onClick={() => setMenuOpen(false)}>{t('navOffers')}</a>
+            </>
+          )}
+          <Link to={getRoute('/menu')} className="navbar__link" onClick={() => setMenuOpen(false)}>
+            {t('navFullMenu')}
           </Link>
-          <Link to="/#order" className="btn-primary navbar__cta" onClick={() => setMenuOpen(false)}>
-            Order Now
+          <Link to={getRoute('/#order')} className="btn-primary navbar__cta" onClick={() => setMenuOpen(false)}>
+            {t('navOrderNow')}
           </Link>
+          <button className="navbar__lang" onClick={() => { toggleLanguage(); setMenuOpen(false); }}>
+            {isRTL ? 'EN' : 'عربي'}
+          </button>
         </div>
 
-        <button
-          className={`navbar__burger ${menuOpen ? 'navbar__burger--open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div className="navbar__right">
+          <button className="navbar__lang navbar__lang--desktop" onClick={toggleLanguage}>
+            {isRTL ? 'EN' : 'عربي'}
+          </button>
+          <button
+            className={`navbar__burger ${menuOpen ? 'navbar__burger--open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </nav>
   );

@@ -118,3 +118,21 @@
     order: -1;
   }
 }
+
+@media (max-width: 480px) {
+  .membership__card {
+    padding: 2rem 1.5rem;
+  }
+
+  .membership__card--featured {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .membership__card-name {
+    font-size: 1.3rem;
+  }
+
+  .membership__card-price {
+    font-size: 1.8rem;
+  }
+}

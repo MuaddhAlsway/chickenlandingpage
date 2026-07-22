@@ -139,6 +139,12 @@
   color: var(--color-white-muted);
 }
 
+@media (max-width: 1024px) {
+  .philosophy__grid {
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 900px) {
   .philosophy__grid {
     grid-template-columns: 1fr;
@@ -148,5 +154,23 @@
   .philosophy__stats {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophy__item {
+    padding: 2rem 1.5rem;
+  }
+
+  .philosophy__item-title {
+    font-size: 1.3rem;
+  }
+
+  .philosophy__item-desc {
+    font-size: 0.9rem;
+  }
+
+  .philosophy__stats-value {
+    font-size: 2.5rem;
   }
 }

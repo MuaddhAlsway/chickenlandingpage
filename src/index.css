@@ -208,3 +208,57 @@ ul, ol {
     padding: var(--space-lg) var(--space-sm);
   }
 }
+
+@media (max-width: 480px) {
+  .section-padding {
+    padding: var(--space-md) var(--space-sm);
+  }
+  
+  .btn-primary,
+  .btn-outline {
+    padding: 0.85rem 1.8rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] body,
+[dir="rtl"] .app {
+  font-family: 'Tajawal', var(--font-body);
+}
+
+[dir="rtl"] .headline {
+  font-family: 'Tajawal', var(--font-display);
+  font-weight: 500;
+}
+
+[dir="rtl"] .label {
+  letter-spacing: 0.1em;
+}
+
+[dir="rtl"] .btn-primary,
+[dir="rtl"] .btn-outline {
+  letter-spacing: 0.05em;
+}
+
+[dir="rtl"] .navbar__link {
+  letter-spacing: 0.05em;
+}
+
+[dir="rtl"] .navbar__logo-text {
+  letter-spacing: 0.15em;
+}
+
+[dir="rtl"] .menu-page__cat-btn,
+[dir="rtl"] .footer__link,
+[dir="rtl"] .detail__ingredient {
+  font-family: 'Tajawal', var(--font-body);
+}
+
+[dir="rtl"] .gold-text {
+  font-style: normal;
+}
+
+[dir="rtl"] .hero__headline-accent {
+  font-style: normal;
+}

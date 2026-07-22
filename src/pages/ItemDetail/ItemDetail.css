@@ -273,6 +273,12 @@
   font-weight: 500;
 }
 
+@media (max-width: 1024px) {
+  .detail__breadcrumb {
+    padding-top: 6.5rem;
+  }
+}
+
 @media (max-width: 900px) {
   .detail__layout {
     grid-template-columns: 1fr;
@@ -290,5 +296,38 @@
   .detail__related-grid {
     grid-template-columns: 1fr;
     max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail__breadcrumb {
+    padding-top: 6rem;
+  }
+
+  .detail__hero-img-wrapper {
+    padding-top: 75%;
+  }
+
+  .detail__name {
+    font-size: 1.8rem;
+  }
+
+  .detail__desc {
+    font-size: 0.95rem;
+  }
+
+  .detail__meta {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .detail__actions {
+    flex-direction: column;
+  }
+
+  .detail__actions .btn-primary,
+  .detail__actions .btn-outline {
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../../context/LanguageContext';
 import './Membership.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Membership = () => {
+  const { t } = useLanguage();
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -40,39 +42,39 @@ const Membership = () => {
 
   const tiers = [
     {
-      name: 'Silver',
+      name: t('membershipSilver'),
       price: 'Free',
       benefits: [
-        'Points on every order',
-        'Birthday reward',
-        'Early access to new items',
-        'Free delivery on orders over SAR 100',
+        t('membershipPoints'),
+        t('membershipBirthday'),
+        t('membershipEarlyAccess'),
+        t('membershipFreeDelivery100'),
       ],
     },
     {
-      name: 'Gold',
+      name: t('membershipGold'),
       price: 'SAR 49/mo',
       benefits: [
-        'Everything in Silver',
-        '2x points multiplier',
-        'Monthly exclusive item',
-        'Priority order processing',
-        'Free delivery always',
-        'Exclusive Gold events',
+        t('membershipPoints'),
+        t('membership2x'),
+        t('membershipMonthlyItem'),
+        t('membershipPriority'),
+        t('membershipFreeDelivery'),
+        t('membershipGoldEvents'),
       ],
       featured: true,
     },
     {
-      name: 'Platinum',
+      name: t('membershipPlatinum'),
       price: 'SAR 129/mo',
       benefits: [
-        'Everything in Gold',
-        '5x points multiplier',
-        'Chef\'s table experience quarterly',
-        'Personal order concierge',
-        'Exclusive Platinum merchandise',
-        'First access to limited drops',
-        'Private events invitation',
+        t('membershipPoints'),
+        t('membership5x'),
+        t('membershipChefsTable'),
+        t('membershipConcierge'),
+        t('membershipMerch'),
+        t('membershipLimitedDrops'),
+        t('membershipPrivateEvents'),
       ],
     },
   ];
@@ -81,10 +83,10 @@ const Membership = () => {
     <section id="membership" ref={sectionRef} className="membership section-padding">
       <div className="container">
         <div className="membership__header">
-          <span className="label membership__label">The Club</span>
+          <span className="label membership__label">{t('membershipLabel')}</span>
           <h2 className="headline membership__title">
-            Join the inner circle.<br/>
-            <span className="gold-text">Elevate everything.</span>
+            {t('membershipTitle1')}<br/>
+            <span className="gold-text">{t('membershipTitle2')}</span>
           </h2>
         </div>
 
@@ -92,7 +94,7 @@ const Membership = () => {
           {tiers.map((tier, i) => (
             <div key={i} className={`membership__card ${tier.featured ? 'membership__card--featured' : ''}`}>
               {tier.featured && (
-                <div className="membership__card-ribbon">Recommended</div>
+                <div className="membership__card-ribbon">{t('membershipRecommended')}</div>
               )}
               <div className="membership__card-header">
                 <h3 className="membership__card-name">{tier.name}</h3>
@@ -109,7 +111,7 @@ const Membership = () => {
                 ))}
               </ul>
               <button className={tier.featured ? 'btn-primary' : 'btn-outline'} style={{ width: '100%', justifyContent: 'center' }}>
-                <span>{tier.price === 'Free' ? 'Join Free' : 'Subscribe'}</span>
+                <span>{tier.price === 'Free' ? t('membershipJoinFree') : t('membershipSubscribe')}</span>
               </button>
             </div>
           ))}

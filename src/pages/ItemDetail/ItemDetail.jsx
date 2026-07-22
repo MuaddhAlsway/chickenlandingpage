@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { getItemById, menuItems } from '../../data/menuData';
+import { useLanguage } from '../../context/LanguageContext';
+import { getItemById, menuItems, getLocalizedItem } from '../../data/menuData';
 import './ItemDetail.css';
 
 const ItemDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t, lang, getRoute } = useLanguage();
   const item = getItemById(id);
 
   useEffect(() => {
@@ -26,9 +28,9 @@ const ItemDetail = () => {
     return (
       <div className="detail detail--notfound">
         <div className="container">
-          <h2 className="headline">Item not found</h2>
-          <Link to="/menu" className="btn-primary" style={{ marginTop: '2rem' }}>
-            <span>Back to Menu</span>
+          <h2 className="headline">{t('detailNotFound')}</h2>
+          <Link to={getRoute('/menu')} className="btn-primary" style={{ marginTop: '2rem' }}>
+            <span>{t('detailBack')}</span>
           </Link>
         </div>
       </div>
@@ -39,6 +41,8 @@ const ItemDetail = () => {
     <span key={i} className={`detail__spice-dot ${i < item.spiceLevel ? 'detail__spice-dot--active' : ''}`}></span>
   ));
 
+  const localized = getLocalizedItem(item, lang);
+
   const relatedItems = menuItems
     .filter(i => i.category === item.category && i.id !== item.id)
     .slice(0, 3);
@@ -46,11 +50,11 @@ const ItemDetail = () => {
   return (
     <div className="detail">
       <div className="detail__breadcrumb container">
-        <Link to="/menu" className="detail__breadcrumb-link">
+        <Link to={getRoute('/menu')} className="detail__breadcrumb-link">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M9 3L5 7L9 11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span>Back to Menu</span>
+          <span>{t('detailBack')}</span>
         </Link>
       </div>
 
@@ -59,44 +63,44 @@ const ItemDetail = () => {
           <div className="detail__layout">
             <div className="detail__visual">
               <div className="detail__hero-img-wrapper">
-                <img src={item.image} alt={item.name} className="detail__hero-img" />
+                <img src={item.image} alt={localized.name} className="detail__hero-img" />
                 <div className="detail__hero-overlay"></div>
               </div>
             </div>
 
             <div className="detail__info">
-              <span className="label detail__tag">{item.tag}</span>
-              <h1 className="headline detail__name">{item.name}</h1>
-              <p className="detail__desc">{item.longDescription}</p>
+              <span className="label detail__tag">{localized.tag}</span>
+              <h1 className="headline detail__name">{localized.name}</h1>
+              <p className="detail__desc">{localized.longDescription}</p>
 
               <div className="detail__meta">
                 <div className="detail__meta-item">
-                  <span className="detail__meta-label">Price</span>
+                  <span className="detail__meta-label">{t('detailPrice')}</span>
                   <span className="detail__meta-value detail__meta-value--price">SAR {item.price}</span>
                 </div>
                 <div className="detail__meta-item">
-                  <span className="detail__meta-label">Category</span>
-                  <span className="detail__meta-value">{item.category}</span>
+                  <span className="detail__meta-label">{t('detailCategory')}</span>
+                  <span className="detail__meta-value">{localized.category}</span>
                 </div>
                 <div className="detail__meta-item">
-                  <span className="detail__meta-label">Prep Time</span>
-                  <span className="detail__meta-value">{item.prepTime}</span>
+                  <span className="detail__meta-label">{t('detailPrepTime')}</span>
+                  <span className="detail__meta-value">{localized.prepTime}</span>
                 </div>
                 <div className="detail__meta-item">
-                  <span className="detail__meta-label">Calories</span>
+                  <span className="detail__meta-label">{t('detailCalories')}</span>
                   <span className="detail__meta-value">{item.calories}</span>
                 </div>
               </div>
 
               <div className="detail__spice">
-                <span className="detail__spice-label">Heat Level</span>
+                <span className="detail__spice-label">{t('detailHeat')}</span>
                 <div className="detail__spice-bar">{spiceDisplay}</div>
               </div>
 
               <div className="detail__ingredients">
-                <span className="detail__ingredients-label">Ingredients</span>
+                <span className="detail__ingredients-label">{t('detailIngredients')}</span>
                 <ul className="detail__ingredients-list">
-                  {item.ingredients.map((ing, i) => (
+                  {localized.ingredients.map((ing, i) => (
                     <li key={i} className="detail__ingredient">
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2.5 6L5 8.5L9.5 3.5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
@@ -109,13 +113,13 @@ const ItemDetail = () => {
 
               <div className="detail__actions">
                 <button className="btn-primary">
-                  <span>Add to Order</span>
+                  <span>{t('detailAdd')}</span>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </button>
-                <Link to="/menu" className="btn-outline">
-                  <span>Back to Menu</span>
+                <Link to={getRoute('/menu')} className="btn-outline">
+          <span>{t('detailBack')}</span>
                 </Link>
               </div>
             </div>
@@ -126,20 +130,23 @@ const ItemDetail = () => {
       {relatedItems.length > 0 && (
         <section className="detail__related section-padding">
           <div className="container">
-            <span className="label">You may also like</span>
+            <span className="label">{t('detailRelated')}</span>
             <div className="detail__related-grid">
-              {relatedItems.map((ri) => (
-                <Link to={`/menu/${ri.id}`} key={ri.id} className="detail__related-card">
-                  <div className="detail__related-img-wrapper">
-                    <img src={ri.image} alt={ri.name} className="detail__related-img" loading="lazy" />
-                    <div className="detail__related-overlay"></div>
-                  </div>
-                  <div className="detail__related-content">
-                    <h4 className="detail__related-name">{ri.name}</h4>
-                    <span className="detail__related-price">SAR {ri.price}</span>
-                  </div>
-                </Link>
-              ))}
+              {relatedItems.map((ri) => {
+                const rLocalized = getLocalizedItem(ri, lang);
+                return (
+                  <Link to={getRoute(`/menu/${ri.id}`)} key={ri.id} className="detail__related-card">
+                    <div className="detail__related-img-wrapper">
+                      <img src={ri.image} alt={rLocalized.name} className="detail__related-img" loading="lazy" />
+                      <div className="detail__related-overlay"></div>
+                    </div>
+                    <div className="detail__related-content">
+                      <h4 className="detail__related-name">{rLocalized.name}</h4>
+                      <span className="detail__related-price">SAR {ri.price}</span>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

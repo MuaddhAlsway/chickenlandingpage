@@ -1,7 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../../context/LanguageContext';
 import './Footer.css';
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="footer">
       <div className="container">
@@ -14,7 +16,7 @@ const Footer = () => {
               </svg>
               <span className="footer__logo-text">GOLDEN CRISP</span>
             </div>
-            <p className="footer__tagline">Redefining Fried Chicken.</p>
+            <p className="footer__tagline">{t('footerTagline')}</p>
             <div className="footer__social">
               <a href="#" className="footer__social-link" aria-label="Instagram">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -42,60 +44,60 @@ const Footer = () => {
           </div>
 
           <div className="footer__links-group">
-            <h4 className="footer__links-title">Menu</h4>
-            <a href="#menu" className="footer__link">Signature Items</a>
-            <a href="#sauces" className="footer__link">Sauces</a>
-            <a href="#family" className="footer__link">Family Meals</a>
-            <a href="#" className="footer__link">Beverages</a>
-            <a href="#" className="footer__link">Desserts</a>
+            <h4 className="footer__links-title">{t('footerMenu')}</h4>
+            <a href="#menu" className="footer__link">{t('footerSignature')}</a>
+            <a href="#sauces" className="footer__link">{t('navSauces')}</a>
+            <a href="#family" className="footer__link">{t('footerFamilyMeals')}</a>
+            <a href="#" className="footer__link">{t('footerBeverages')}</a>
+            <a href="#" className="footer__link">{t('footerDesserts')}</a>
           </div>
 
           <div className="footer__links-group">
-            <h4 className="footer__links-title">Company</h4>
-            <a href="#" className="footer__link">Our Story</a>
-            <a href="#" className="footer__link">Careers</a>
-            <a href="#" className="footer__link">Press</a>
-            <a href="#" className="footer__link">Sustainability</a>
+            <h4 className="footer__links-title">{t('footerCompany')}</h4>
+            <a href="#" className="footer__link">{t('footerStory')}</a>
+            <a href="#" className="footer__link">{t('footerCareers')}</a>
+            <a href="#" className="footer__link">{t('footerPress')}</a>
+            <a href="#" className="footer__link">{t('footerSustainability')}</a>
           </div>
 
           <div className="footer__links-group">
-            <h4 className="footer__links-title">Support</h4>
-            <a href="#" className="footer__link">Contact Us</a>
-            <a href="#membership" className="footer__link">The Club</a>
-            <a href="#" className="footer__link">Gift Cards</a>
-            <a href="#" className="footer__link">Catering</a>
+            <h4 className="footer__links-title">{t('footerSupport')}</h4>
+            <a href="#" className="footer__link">{t('footerContact')}</a>
+            <a href="#membership" className="footer__link">{t('membershipLabel')}</a>
+            <a href="#" className="footer__link">{t('footerGiftCards')}</a>
+            <a href="#" className="footer__link">{t('footerCatering')}</a>
           </div>
 
           <div className="footer__links-group">
-            <h4 className="footer__links-title">Connect</h4>
-            <a href="#order" className="footer__link">Order Online</a>
-            <a href="#" className="footer__link">Find a Location</a>
-            <a href="#" className="footer__link">Download App</a>
+            <h4 className="footer__links-title">{t('footerConnect')}</h4>
+            <a href="#order" className="footer__link">{t('footerOrderOnline')}</a>
+            <a href="#" className="footer__link">{t('footerFindLocation')}</a>
+            <a href="#" className="footer__link">{t('footerDownloadApp')}</a>
           </div>
         </div>
 
         <div className="footer__newsletter">
           <div className="footer__newsletter-content">
-            <span className="label">Stay Golden</span>
+            <span className="label">{t('footerStayGolden')}</span>
             <p className="footer__newsletter-desc">
-              Get exclusive offers, new menu drops, and golden moments delivered to your inbox.
+              {t('footerNewsletter')}
             </p>
           </div>
           <div className="footer__newsletter-form">
-            <input type="email" placeholder="Your email address" className="footer__newsletter-input" />
+            <input type="email" placeholder={t('footerEmail')} className="footer__newsletter-input" />
             <button className="btn-primary footer__newsletter-btn">
-              <span>Subscribe</span>
+              <span>{t('footerSubscribe')}</span>
             </button>
           </div>
         </div>
 
         <div className="footer__bottom">
           <span className="footer__copyright">
-            &copy; 2024 GOLDEN CRISP. All rights reserved.
+            {t('footerCopyright')}
           </span>
           <div className="footer__bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+            <a href="#">{t('footerPrivacy')}</a>
+            <a href="#">{t('footerTerms')}</a>
           </div>
         </div>
       </div>

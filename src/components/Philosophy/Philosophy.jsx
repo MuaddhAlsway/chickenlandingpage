@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '../../context/LanguageContext';
 import './Philosophy.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Philosophy = () => {
   const sectionRef = useRef(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -49,8 +51,8 @@ const Philosophy = () => {
   const pillars = [
     {
       number: '01',
-      title: 'Premium Sourcing',
-      description: 'Hand-selected ingredients from the finest farms. Every spice blend is crafted by master chefs using centuries-old techniques with modern precision.',
+      title: t('philosophyPillar1Title'),
+      description: t('philosophyPillar1Desc'),
       icon: (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="0.75"/>
@@ -60,8 +62,8 @@ const Philosophy = () => {
     },
     {
       number: '02',
-      title: 'Fresh Preparation',
-      description: 'Never frozen, always fresh. Each piece is prepared to order using our proprietary 48-hour marination process for unmatched flavor depth.',
+      title: t('philosophyPillar2Title'),
+      description: t('philosophyPillar2Desc'),
       icon: (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="0.75"/>
@@ -71,8 +73,8 @@ const Philosophy = () => {
     },
     {
       number: '03',
-      title: 'Luxury Presentation',
-      description: 'Presentation is everything. From custom gold-foil packaging to temperature-controlled delivery, the experience begins before the first bite.',
+      title: t('philosophyPillar3Title'),
+      description: t('philosophyPillar3Desc'),
       icon: (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="15" stroke="currentColor" strokeWidth="0.75"/>
@@ -84,20 +86,20 @@ const Philosophy = () => {
   ];
 
   const stats = [
-    { value: '48h', label: 'Marination Process' },
-    { value: '100%', label: 'Fresh Daily' },
-    { value: '12', label: 'Signature Spices' },
-    { value: '4.9', label: 'Customer Rating' },
+    { value: '48h', label: t('statMarination') },
+    { value: '100%', label: t('statFresh') },
+    { value: '12', label: t('statSpices') },
+    { value: '4.9', label: t('statRating') },
   ];
 
   return (
     <section ref={sectionRef} className="philosophy section-padding">
       <div className="container">
         <div className="philosophy__header">
-          <span className="label philosophy__label">Our Philosophy</span>
+          <span className="label philosophy__label">{t('philosophyLabel')}</span>
           <h2 className="headline philosophy__title">
-            Crafted with obsession.<br/>
-            <span className="gold-text">Served with pride.</span>
+            {t('philosophyTitle1')}<br/>
+            <span className="gold-text">{t('philosophyTitle2')}</span>
           </h2>
         </div>
 

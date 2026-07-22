@@ -237,7 +237,7 @@
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
   .menu-page__hero {
     padding: 8rem 0 3rem;
   }
@@ -254,5 +254,24 @@
   .menu-page__cat-btn {
     padding: 0.5rem 1rem;
     font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-page__hero {
+    padding: 7rem 0 2rem;
+  }
+
+  .menu-page__hero-title {
+    font-size: 2rem;
+  }
+
+  .menu-page__cat-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6rem;
+  }
+
+  .menu-page__card-content {
+    padding: 1.25rem;
   }
 }
